@@ -10,7 +10,6 @@ import io.mpos.android.internal.AndroidImageHelper;
 import io.mpos.paymentdetails.ApplicationInformation;
 import io.mpos.paymentdetails.DccInformation;
 import io.mpos.provider.ProviderMode;
-import io.mpos.provider.listener.TransactionListener;
 import io.mpos.transactionprovider.*;
 import io.mpos.transactions.Currency;
 import io.mpos.transactions.Transaction;
@@ -29,6 +28,12 @@ public class CustomPayworkComponent {
     private String merchantIdentifier;
     private String merchantSecretKey;
     private HashMap<String, TransactionProcess> currentTransactions = new HashMap<>();
+
+    public CustomPayworkComponent(Context context, String merchantIdentifier, String merchantSecretKey) {
+        this.context = context;
+        this.merchantIdentifier = merchantIdentifier;
+        this.merchantSecretKey = merchantSecretKey;
+    }
 
     /**
      * This method start a transaction and return the id
